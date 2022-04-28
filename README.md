@@ -1,4 +1,4 @@
 # 动效展示
 
-[1.弹弹球](https://github.com/fengminjie123/dongxiao/ball.html)
+[1.弹弹球](https://theluckdark.github.io/dongxiao/ball.html)
 

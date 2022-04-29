@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/vivus/latest/vivus.min.js"></script>
+    <title>SVG路径动画</title>
+</head>
+
+<body>
+    <div id="app">
+        <template>
+            <div class="box">
+                <svg id="svgbox" class="svgbox" width="300" height="400" viewbox="0 0 300 400"
+                    enable-background="new 0 0 200 200">
+                    <defs>
+                        <g id="path">
+                            <path d="M68.18066,68.18066L131.81934,131.81934"></path>
+                            <path d="M68.18066,131.82031L131.81934,68.17969"></path>
+                            <path d="M35,100A65,65 0,1,1 165,100A65,65 0,1,1 35,100"></path>
+                            <path d="M25,100A75,75 0,1,1 175,100A75,75 0,1,1 25,100"></path>
+                            <path d="M15,100A85,85 0,1,1 185,100A85,85 0,1,1 15,100"></path>
+                            <path d="M5,100A95,95 0,1,1 195,100A95,95 0,1,1 5,100"></path>
+                        </g>
+                    </defs>
+                    <use class="path-group path-group-1" xlink:href="#path" x="0" y="0" />
+                </svg>
+                <div style="width: 0;flex: 1;height: 100%;justify-content: center;align-items: center;display: flex;">
+                    <div class="main-box">
+                        <div style="display: flex;">
+                            <div style="margin-right: 10px;line-height: 32px;color: #F7A800">类型</div>
+                            <div @click="changeType('delayed')" :class="type == 'delayed' ? 'active-color a1' : 'a1'">
+                                delayed</div>
+                            <div @click="changeType('scenario-sync')"
+                                :class="type == 'scenario-sync' ? 'active-color a1' : 'a1'">scenario-sync</div>
+                            <div @click="changeType('oneByOne')" :class="type == 'oneByOne' ? 'active-color a1' : 'a1'">
+                                oneByOne</div>
+                        </div>
+                        <!-- <div style="display: flex;">
+                            <div style="margin-right: 10px;line-height: 32px;color: #F7A800">路径</div>
+                            <div @click="changePath('linear')" :class="path == 'linear' ? 'active-color a1' : 'a1'">linear</div>
+                            <div @click="changePath('ease')" :class="path == 'ease' ? 'active-color a1' : 'a1'">ease</div>
+                            <div @click="changePath('ease-in')" :class="path == 'ease-in' ? 'active-color a1' : 'a1'">ease-in</div>
+                            <div @click="changePath('ease-out')" :class="path == 'ease-out' ? 'active-color a1' : 'a1'">ease-out</div>
+                            <div @click="changePath('ease-out bounce')" :class="path == 'ease-out bounce' ? 'active-color a1' : 'a1'">ease-out bounce</div>
+                        </div> -->
+                        <div style="display: flex;">
+                            <div style="margin-right: 10px;line-height: 32px;color: #F7A800">动画</div>
+                            <div @click="changeAnim('LINEAR')" :class="anim == 'LINEAR' ? 'active-color a1' : 'a1'">
+                                linear</div>
+                            <div @click="changeAnim('EASE')" :class="anim == 'EASE' ? 'active-color a1' : 'a1'">ease
+                            </div>
+                            <div @click="changeAnim('EASE_IN')" :class="anim == 'EASE_IN' ? 'active-color a1' : 'a1'">
+                                ease-in</div>
+                            <div @click="changeAnim('EASE_OUT')" :class="anim == 'EASE_OUT' ? 'active-color a1' : 'a1'">
+                                ease-out</div>
+                            <div @click="changeAnim('EASE_OUT_BOUNCE')"
+                                :class="anim == 'EASE_OUT_BOUNCE' ? 'active-color a1' : 'a1'">ease-out bounce</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+    <script>
+        let newType = 'delayed'
+        let newAnim = 'LINEAR'
+        var app = new Vue({
+            el: '#app',
+            data: {
+                type: 'delayed',
+                // path: '',
+                anim: 'LINEAR'
+            },
+
+            methods: {
+                changeType(type) {
+                    this.type = type
+                    newType = this.type
+                    synthD && synthD.stop().destroy();
+                    synthD = new Vivus('svgbox', {
+                        type: newType,
+                        duration: 200,
+                        start: 'manual',
+                        animTimingFunction: Vivus[newAnim]
+                    });
+                    synthD.reset().play(); //播放动画
+                    //svgbox.reset().play(); //重新播放动画
+                    // svgbox.play(-3); //倒带，反向收回之前完成的动画 
+                },
+                // changePath(path) {
+                //     this.path = path
+                // },
+                changeAnim(anim) {
+                    this.anim = anim
+                    newAnim = this.anim
+                    synthD && synthD.stop().destroy();
+                    synthD = new Vivus('svgbox', {
+                        type: newType,
+                        duration: 200,
+                        start: 'manual',
+                        animTimingFunction: Vivus[newAnim]
+                    });
+                    synthD.reset().play(); //播放动画
+                    //svgbox.reset().play(); //重新播放动画
+                    //svgbox.play(-3); //倒带，反向收回之前完成的动画 
+                }
+            }
+        })
+    </script>
+</body>
+<script>
+    console.log('1', newType)
+    var synthD = new Vivus('svgbox', {
+        type: newType,
+        duration: 200,
+        start: 'manual',
+        animTimingFunction: Vivus[newAnim]
+    });
+    synthD.play()
+</script>
+<style>
+    body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0px !important;
+    }
+
+    #app {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .main-box {
+        width: 100%;
+        height: 140px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+
+    .active-color {
+        background-color: #F7A800 !important;
+        color: #fff !important;
+    }
+
+    .a1 {
+        min-width: 10px;
+        box-sizing: border-box;
+        padding: 3px 10px;
+        height: 32px;
+        border: 2px solid #F7A800;
+        border-radius: 3px;
+        margin-right: 3px;
+        color: #F7A800;
+        cursor: pointer;
+    }
+
+    .box {
+        width: 811px;
+        height: 400px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+        box-shadow: 0px 0px 8px 2px #efefef;
+        overflow: hidden;
+        display: flex;
+    }
+
+    .path-group {
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 560;
+        stroke-dashoffset: 560;
+
+        animation-duration: 2s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+        animation-direction: alternate;
+    }
+
+    .path-group-1 {
+        stroke: #086972;
+        stroke-width: 5px;
+        animation-name: strokeText1;
+    }
+
+    @keyframes strokeText1 {
+        10% {
+            stroke-dashoffset: 560;
+        }
+
+        40%,
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+</style>
+
+</html>

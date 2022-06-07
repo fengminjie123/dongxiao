@@ -27,7 +27,7 @@
 							<div class="b-face b-six-face" @click="hideFn"></div>
 						</div>
 					</div>
-					<div v-else :class="flag == 0 ? 'w-main-box' : flag == 1 ? 'show w-main-box' : 'hide w-main-box'">
+					<div v-else :class="flag == 0 ? 'w-main-box' : flag == 1 ? 'show1 w-main-box' : 'hide1 w-main-box'">
 						<div style="color: #fff;margin-top: 10px;margin-left: 10px;cursor: pointer;" @click="showFn">返回</div>
 					</div>
 				</div>
@@ -45,7 +45,7 @@
 						this.flag = 1
 						setTimeout(() => {
 							this.showFlag = 1
-						}, 500)
+						}, 200)
 					},
 					showFn() {
 						this.flag = 2
@@ -287,6 +287,14 @@
 		.show {
 			opacity: 1!important;
 			transition: opacity .5s;
+		}
+		.hide1 {
+			opacity: 0!important;
+			transition: opacity 3.5s;
+		}
+		.show1 {
+			opacity: 1!important;
+			transition: opacity .2s;
 		}
 	</style>
 </html>

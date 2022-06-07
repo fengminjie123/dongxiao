@@ -12,19 +12,43 @@
 					<div v-if="showFlag != 1" :class="flag == 0 ? 'main-box' : flag == 1 ? 'hide main-box' : 'show main-box'">
 						<div class="box">
 							<!-- 小骰子 -->
-							<div class="s-face s-one-face"></div>
-							<div class="s-face s-two-face"></div>
-							<div class="s-face s-three-face"></div>
-							<div class="s-face s-four-face"></div>
-							<div class="s-face s-five-face"></div>
-							<div class="s-face s-six-face"></div>
+							<div class="s-face s-one-face">
+								<img class="img" src="1.jpg" alt="">
+							</div>
+							<div class="s-face s-two-face">
+								<img class="img" src="2.jpg" alt="">
+							</div>
+							<div class="s-face s-three-face">
+								<img class="img" src="3.jpg" alt="">
+							</div>
+							<div class="s-face s-four-face">
+								<img class="img" src="4.jpg" alt="">
+							</div>
+							<div class="s-face s-five-face">
+								<img class="img" src="5.jpg" alt="">
+							</div>
+							<div class="s-face s-six-face">
+								<img class="img" src="6.jpg" alt="">
+							</div>
 							<!-- 大骰子 -->
-							<div class="b-face b-one-face" @click="hideFn"></div>
-							<div class="b-face b-two-face" @click="hideFn"></div>
-							<div class="b-face b-three-face" @click="hideFn"></div>
-							<div class="b-face b-four-face" @click="hideFn"></div>
-							<div class="b-face b-five-face" @click="hideFn"></div>
-							<div class="b-face b-six-face" @click="hideFn"></div>
+							<div class="b-face b-one-face" @click="hideFn">
+								<img class="img1" src="1.jpg" alt="">
+							</div>
+							<div class="b-face b-two-face" @click="hideFn">
+								<img class="img1" src="2.jpg" alt="">
+							</div>
+							<div class="b-face b-three-face" @click="hideFn">
+								<img class="img1" src="3.jpg" alt="">
+							</div>
+							<div class="b-face b-four-face" @click="hideFn">
+								<img class="img1" src="4.jpg" alt="">
+							</div>
+							<div class="b-face b-five-face" @click="hideFn">
+								<img class="img1" src="5.jpg" alt="">
+							</div>
+							<div class="b-face b-six-face" @click="hideFn">
+								<img class="img1" src="6.jpg" alt="">
+							</div>
 						</div>
 					</div>
 					<div v-else :class="flag == 0 ? 'w-main-box' : flag == 1 ? 'show1 w-main-box' : 'hide1 w-main-box'">
@@ -113,6 +137,7 @@
 			position: absolute;
 			top: 50%;
 			left: 50%;
+			overflow: hidden;
 		}
 		.b-face {
 			width: 260px;
@@ -295,6 +320,14 @@
 		.show1 {
 			opacity: 1!important;
 			transition: opacity .2s;
+		}
+		.img {
+			width: 100px;
+			height: 100px;
+		}
+		.img1 {
+			width: 260px;
+			height: 260px;
 		}
 	</style>
 </html>

@@ -35,7 +35,6 @@
 						}
 						nums = [...nums, ...res]
 					}
-
 					// 单个长方形构造函数
 					function Rect(x, y, width, height) {
 						this.x = x // 坐标x
@@ -44,7 +43,7 @@
 						this.height = height // 长方形的高
 					}
 
-					// 单个长方形的渲染函数
+					//单个长方形的渲染函数
 					Rect.prototype.draw = function() {
 						ctx.beginPath() // 开始画一个
 						ctx.fillRect(this.x, this.y, this.width, this.height) // 画一个
@@ -54,12 +53,13 @@
 					const CosandSin = []
 					for (let i = 0; i < 360; i++) {
 						const jiaodu = i / 180 * Math.PI
+						console.log('56', jiaodu)
 						CosandSin.push({
 							cos: Math.cos(jiaodu),
 							sin: Math.sin(jiaodu)
 						})
 					}
-
+					console.log('74', CosandSin)
 					function drawAll(arr) {
 						return new Promise((resolve) => {
 							setTimeout(() => {
@@ -81,7 +81,7 @@
 						})
 					}
 					drawAll(nums) // 执行渲染函数
-					// 冒泡排序
+					// // 冒泡排序
 					async function bubbleSort(arr) {
 						var len = arr.length;
 						for (var i = 0; i < len; i++) {

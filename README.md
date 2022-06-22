@@ -1,13 +1,24 @@
-# 动效展示
+# ds
 
-[1-弹弹球](https://fengminjie123.github.io/dongxiao/ball/index.html)
+## Project setup
+```
+npm install
+```
 
-[9-文字路径](https://fengminjie123.github.io/dongxiao/textPath/index.html)
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-[8-镂空文本](https://fengminjie123.github.io/dongxiao/hollowText/index.html)
+### Compiles and minifies for production
+```
+npm run build
+```
 
-[41-canvas基础](https://fengminjie123.github.io/dongxiao/canvas/index.html)
+### Lints and fixes files
+```
+npm run lint
+```
 
-[28-长阴影](https://fengminjie123.github.io/dongxiao/shadow/index.html)
-
-[2-旋转的骰子](https://fengminjie123.github.io/dongxiao/photoalbum/index.html)
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
